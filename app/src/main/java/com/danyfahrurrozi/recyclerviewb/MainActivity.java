@@ -23,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
 
     private FloatingActionButton _addButton;
     private RecyclerView _recyclerView1;
+    private FloatingActionButton _RefreshButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +54,17 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
                 Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void initRefreshButton() {
+        _RefreshButton = findViewById(R.id.addButton);
+
+        _RefreshButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                loadRecycleView();
             }
         });
     }
